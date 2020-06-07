@@ -131,7 +131,8 @@ public class XCartographyScreen extends ContainerScreen<XCartographyContainer>
 			GlStateManager.pushMatrix();
 			GlStateManager.translatef((float) x, (float) y, 1.0F);
 			GlStateManager.scalef(scale, scale, 1.0F);
-			this.minecraft.gameRenderer.getMapItemRenderer().renderMap(mapDataIn, true);
+			// TODO requires 5 parameters
+			//this.minecraft.gameRenderer.getMapItemRenderer().renderMap(mapDataIn, true);
 			GlStateManager.popMatrix();
 		}
 	}
