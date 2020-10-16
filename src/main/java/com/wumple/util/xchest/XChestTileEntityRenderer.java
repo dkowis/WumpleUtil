@@ -1,13 +1,17 @@
 package com.wumple.util.xchest;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ChestBlock;
+import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
-import net.minecraft.client.renderer.tileentity.model.ChestModel;
+// TODO replace with real ChestModel
+import com.wumple.util.todo.ChestModel;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.state.properties.ChestType;
 import net.minecraft.tileentity.IChestLid;
 import net.minecraft.tileentity.TileEntity;
@@ -21,9 +25,10 @@ public class XChestTileEntityRenderer<T extends TileEntity & IChestLid> extends 
 {
 	private static final ResourceLocation TEXTURE_NORMAL = new ResourceLocation("textures/entity/chest/normal.png");
 	private final ChestModel simpleChest = new ChestModel();
+	private final ResourceLocation[] DESTROY_STAGES = new ResourceLocation[] {};
 
-	public XChestTileEntityRenderer()
-	{
+	public XChestTileEntityRenderer(TileEntityRendererDispatcher rendererDispatcherIn) {
+		super(rendererDispatcherIn);
 	}
 
 	protected ResourceLocation getTexture()
@@ -111,11 +116,20 @@ public class XChestTileEntityRenderer<T extends TileEntity & IChestLid> extends 
 		return this.simpleChest;
 	}
 
+	private void bindTexture(ResourceLocation resourcelocation) {
+		// TODO called function
+	}
+
 	protected void applyLidRotation(T p_199346_1_, float p_199346_2_, ChestModel p_199346_3_)
 	{
 		float f = ((IChestLid) p_199346_1_).getLidAngle(p_199346_2_);
 		f = 1.0F - f;
 		f = 1.0F - f * f * f;
 		p_199346_3_.getLid().rotateAngleX = -(f * ((float) Math.PI / 2F));
+	}
+
+	@Override
+	public void render(T tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
+		// TODO required implementation
 	}
 }

@@ -3,10 +3,9 @@ package com.wumple.util.xchest3;
 import com.mojang.blaze3d.platform.GlStateManager;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ChestBlock;
-import net.minecraft.client.renderer.tileentity.model.ChestModel;
-import net.minecraft.client.renderer.tileentity.model.LargeChestModel;
+// TODO replace with real ChestModel
+import com.wumple.util.todo.ChestModel;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.state.properties.ChestType;
 import net.minecraft.tileentity.IChestLid;
 import net.minecraft.tileentity.TileEntity;
@@ -21,8 +20,13 @@ public class XChestTileEntityRenderer<T extends TileEntity & IChestLid> extends 
 	private static final ResourceLocation TEXTURE_NORMAL_DOUBLE = new ResourceLocation(
 			"textures/entity/chest/normal_double.png");
 
-	private final ChestModel largeChest = new LargeChestModel();
-	
+	//private final ChestModel largeChest = new LargeChestModel();
+	private final ChestModel largeChest = new ChestModel();
+
+	public XChestTileEntityRenderer(TileEntityRendererDispatcher rendererDispatcherIn) {
+		super(rendererDispatcherIn);
+	}
+
 	protected ResourceLocation getTextureDouble()
 	{
 		return TEXTURE_NORMAL_DOUBLE;

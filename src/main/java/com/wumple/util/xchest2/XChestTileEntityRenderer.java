@@ -1,12 +1,16 @@
 package com.wumple.util.xchest2;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
-import net.minecraft.client.renderer.tileentity.model.ChestModel;
+// TODO replace with real ChestModel
+import com.wumple.util.todo.ChestModel;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.tileentity.IChestLid;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -19,11 +23,12 @@ public class XChestTileEntityRenderer<T extends TileEntity & IChestLid> extends 
 {
 	protected static final ResourceLocation TEXTURE_NORMAL = new ResourceLocation("textures/entity/chest/normal.png");
 	protected final ChestModel simpleChest = new ChestModel();
+	protected final ResourceLocation[] DESTROY_STAGES = new ResourceLocation[] {};
 
-	public XChestTileEntityRenderer()
-	{
+	public XChestTileEntityRenderer(TileEntityRendererDispatcher rendererDispatcherIn) {
+		super(rendererDispatcherIn);
 	}
-	
+
 	protected ResourceLocation getTexture()
 	{
 		return TEXTURE_NORMAL;
@@ -111,5 +116,14 @@ public class XChestTileEntityRenderer<T extends TileEntity & IChestLid> extends 
 		f = 1.0F - f;
 		f = 1.0F - f * f * f;
 		p_199346_3_.getLid().rotateAngleX = -(f * ((float) Math.PI / 2F));
+	}
+
+	@Override
+	public void render(T tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
+		// TODO required implementations
+	}
+
+	protected void bindTexture(ResourceLocation resourcelocation) {
+		// TODO called function
 	}
 }
