@@ -9,6 +9,7 @@
     "1.12.2-recommended": "2.12.8"
   },
   "1.15.2": {
+    "3.6.0-beepdog": "Disabled the ChestModel",
     "3.6.0": "XComposter improvements/bug fixes"
   },
   "1.14.4": {
